@@ -1,11 +1,15 @@
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct RMCharacterDetailView: View {
   @StateObject var viewModel: CharacterDetailViewModel
   
+  //private let imageURL: URL
+  
   init(viewModel: RMCharacter) {
     _viewModel = StateObject(wrappedValue: CharacterDetailViewModel(character: viewModel,
                                                                     networkService: RMNetworkService()))
+    //imageURL = URL(string: viewModel.image) ?? URL(string: "")!
   }
   
   var body: some View {
@@ -15,7 +19,7 @@ struct RMCharacterDetailView: View {
       } else if let error = viewModel.error {
         Text("Error: \(error)")
       } else {
-        AsyncImage(url: URL(string: viewModel.character.image)) { phase in
+        WebImage(url: URL(string: viewModel.character.image)) { phase in
           if let image = phase.image {
             image
               .resizable()

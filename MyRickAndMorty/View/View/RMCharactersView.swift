@@ -1,31 +1,14 @@
 import SwiftUI
-import SDWebImage
+import SDWebImageSwiftUI
 
 struct RMCharactersView: View {
   @StateObject var viewModel: CharactersViewModel
-  //  @State private var searchText = ""
   @State private var searchQuery = ""
-  
-  //Простой поиск
-  //  var filterCharacters: [RMCharacter] {
-  //    if searchText.isEmpty {
-  //      return viewModel.characters
-  //    } else {
-  //      return viewModel.characters.filter {
-  //        $0.name.localizedCaseInsensitiveContains(searchText) ||
-  //        $0.gender.localizedCaseInsensitiveContains(searchText) ||
-  //        $0.type.localizedCaseInsensitiveContains(searchText)
-  //      }
-  //    }
-  //  }
   
   var body: some View {
     NavigationStack {
       contentView
         .navigationTitle("Rick and Morty")
-        .task {
-          await viewModel.loadFethchedCharacters()
-        }
         .overlay {
           loadingProgress
         }
@@ -51,9 +34,13 @@ struct RMCharactersView: View {
         .padding()
     }
     .searchable(text: $searchQuery)
-    .onChange(of: searchQuery) { newValue in
-      viewModel.searchDebounce(text: newValue)
+    .onChange(of: searchQuery) { viewModel.searchCharacters(text: $0) }
+    .task {
+      await viewModel.loadFethchedCharacters()
     }
+//    .onChange(of: searchQuery) { newValue in
+//      viewModel.searchCharacters(text: newValue)
+//    }
   }
   
   @ViewBuilder
@@ -80,12 +67,18 @@ struct RMCharactersView: View {
 }
 
 struct CharacterCard: View {
-  let character: RMCharacter
+  private let character: RMCharacter
+  //  private let imageURL: URL
+  //
+  init(character: RMCharacter) {
+    self.character = character
+    //    self.imageURL = URL(string: character.image)!
+  }
   
   var body: some View {
     NavigationLink(destination: RMCharacterDetailView(viewModel: character)) {
       VStack(alignment: .leading) {
-        AsyncImage(url: URL(string: character.image)) { phase in
+        WebImage(url: URL(string: character.image)) { phase in
           if let image = phase.image {
             image
               .resizable()

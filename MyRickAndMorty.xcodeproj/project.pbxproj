@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A50464DD2E38893C00A45850 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A50464DC2E38893C00A45850 /* SDWebImage */; };
 		A50464DF2E38893C00A45850 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A50464DE2E38893C00A45850 /* SDWebImageMapKit */; };
+		A50464E22E39FC4100A45850 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A50464E12E39FC4100A45850 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A50464E22E39FC4100A45850 /* SDWebImageSwiftUI in Frameworks */,
 				A50464DF2E38893C00A45850 /* SDWebImageMapKit in Frameworks */,
 				A50464DD2E38893C00A45850 /* SDWebImage in Frameworks */,
 			);
@@ -121,6 +123,7 @@
 			packageProductDependencies = (
 				A50464DC2E38893C00A45850 /* SDWebImage */,
 				A50464DE2E38893C00A45850 /* SDWebImageMapKit */,
+				A50464E12E39FC4100A45850 /* SDWebImageSwiftUI */,
 			);
 			productName = MyRickAndMorty;
 			productReference = A5AA3BA42DDD895000B21B3A /* MyRickAndMorty.app */;
@@ -206,6 +209,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				A50464DB2E38893C00A45850 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				A50464E02E39FC4100A45850 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A5AA3BA52DDD895000B21B3A /* Products */;
@@ -580,6 +584,14 @@
 				minimumVersion = 5.21.1;
 			};
 		};
+		A50464E02E39FC4100A45850 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -592,6 +604,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A50464DB2E38893C00A45850 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		A50464E12E39FC4100A45850 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A50464E02E39FC4100A45850 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
