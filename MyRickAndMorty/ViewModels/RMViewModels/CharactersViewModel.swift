@@ -179,6 +179,9 @@ final class CharactersViewModel: ObservableObject {
     
     let thresholdIndex = characters.index(characters.endIndex, offsetBy: -5)
     if characters.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
+      
+      
+      
       Task { await loadFethchedCharacters() }
     }
   }
